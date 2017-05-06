@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+
+    <title>Spring Boot BPM example</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.css"
+            th:href="@{/webjars/jquery/2.1.4/jquery.min.css}">
+    </script>
+          
+    <link rel="stylesheet" href="/css/spring-core.css"/>
+    <script src="js/main.js"></script>
+          
+</head>
+
+
+<body>
+
+<div class="container" style="min-height: 500px">
+
+    <div class="starter-template">
+        <h1>Start BPM Process</h1>
+
+        <div id="feedback"></div>
+
+        <form class="form-horizontal" id="search-form">
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Process ID</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="username"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="button" id="btnStart" name="btnStart" value="Start BPM"
+                            class="btn btn-primary btn-lg">
+                    </input>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

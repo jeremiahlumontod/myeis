@@ -10,11 +10,15 @@ $(document).ready(function () {
     });
 
     $('#btnSearch').click(function() {
-        //alert("search-form fired!");
+        //alert("btnSearch fired!");
         fire_ajax_submit();
         return false;
     });
 
+    $('#btnStart').click(function() {
+        alert("btnStart fired!");
+        return false;
+    });
 
 });
 

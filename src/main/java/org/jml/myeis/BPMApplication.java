@@ -9,10 +9,10 @@ import org.springframework.context.ApplicationContext;
 
 @EntityScan(basePackages = {"org.jml.myeis.domain"})
 @SpringBootApplication
-public class SpringmvcApplication {
+public class BPMApplication {
 
     public static void main(String[] args) {
-        ApplicationContext ctx = SpringApplication.run(SpringmvcApplication.class, args);
+        ApplicationContext ctx = SpringApplication.run(BPMApplication.class, args);
         System.out.println("Beans*******");
         System.out.println(ctx.getBeanDefinitionCount());
         //for(String name: ctx.getBeanDefinitionNames()) {
