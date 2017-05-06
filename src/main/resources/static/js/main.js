@@ -1,13 +1,7 @@
-$(document).ready(function () {
 
-    $("#search-form").submit(function (event) {
-
-        //stop submit the form, we will post it manually.
-        event.preventDefault();
-        //alert("search-form fired!");
-        fire_ajax_submit();
-
-    });
+$(document).ready(function() {
+	alert("$(document).ready(function() fired!");
+});
 
     $('#btnSearch').click(function() {
         //alert("btnSearch fired!");
@@ -20,7 +14,6 @@ $(document).ready(function () {
         return false;
     });
 
-});
 
 function fire_ajax_submit() {
 
