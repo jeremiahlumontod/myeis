@@ -43,7 +43,7 @@ public class BPMProcessController {
     @Autowired
     private RepositoryService repositoryService;
 
-    @RequestMapping(value = "/bpm/start", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(value = "/bpmprocess/start", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
     public String newCustomer(Model model) {
     	System.out.println("step 1. create instance of the process");
         Map<String, Object> variables = new HashMap<String, Object>();
@@ -55,12 +55,12 @@ public class BPMProcessController {
         return null;
     }
 
-    @RequestMapping(value = "/process", method = RequestMethod.POST)
+    @RequestMapping(value = "/bpmprocess", method = RequestMethod.POST)
     public void process(@RequestBody Map<String, Object> payload) throws Exception {
     	System.out.println(payload);
     }
     
-    @RequestMapping("/process/new")
+    @RequestMapping("/bpmprocess/new")
     public String processNew() {
         //return "/process/startprocess";
     	return "startprocess";

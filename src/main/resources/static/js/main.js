@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
-	alert("$(document).ready(function() fired!");
-});
+	//alert("$(document).ready(function() fired!");
+
 
     $('#btnSearch').click(function() {
         //alert("btnSearch fired!");
@@ -11,8 +11,11 @@ $(document).ready(function() {
 
     $('#btnStart').click(function() {
         alert("btnStart fired!");
+        fire_ajax_submit();
         return false;
     });
+
+});
 
 
 function fire_ajax_submit() {
