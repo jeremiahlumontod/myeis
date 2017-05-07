@@ -11,9 +11,10 @@ import org.springframework.context.ApplicationContext;
 @EntityScan(basePackages = {"org.jml.myeis.domain"})
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {
-        org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class
+        org.activiti.spring.boot.RestApiAutoConfiguration.class,
+        org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class,
+        org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration.class
 })
-
 public class BPMApplication {
 
     public static void main(String[] args) {
