@@ -19,17 +19,19 @@ $(document).ready(function() {
 
 
 function start_the_workflow_process() {
-
+    alert($("#username").val());
     var search = {}
     search["username"] = $("#username").val();
     //search["email"] = $("#email").val();
 
     $("#btnStart").prop("disabled", true);
+    var sdata = JSON.stringify(search);
+    alert("sdata: " + sdata);
 
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "/bpm/workflowprocess/start",
+        url: "http://localhost:8080/springmvc/bpm/workflowprocess/start",
         data: JSON.stringify(search),
         dataType: 'json',
         cache: false,
@@ -49,6 +51,7 @@ function start_the_workflow_process() {
 
             var json = "<h4>Ajax Response</h4><pre>"
                 + e.responseText + "</pre>";
+
             $('#feedback').html(json);
 
             console.log("ERROR : ", e);
