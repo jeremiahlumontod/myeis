@@ -15,24 +15,29 @@ $(document).ready(function() {
         return false;
     });
 
+    $('#btnFinishTask').click(function() {
+        //alert("btnStart fired!");
+        finish_the_workflow_task();
+        return false;
+    });
+
 });
 
 
 function start_the_workflow_process() {
-    alert($("#username").val());
-    var search = {}
-    search["username"] = $("#username").val();
-    //search["email"] = $("#email").val();
+    //alert($("#username").val());
+    var bpmdata = {}
+    bpmdata["bpmid"] = $("#bpmid").val();
 
     $("#btnStart").prop("disabled", true);
-    var sdata = JSON.stringify(search);
-    alert("sdata: " + sdata);
+    var sdata = JSON.stringify(bpmdata);
+    //alert("bpmdata: " + bpmdata);
 
     $.ajax({
         type: "POST",
         contentType: "application/json",
         url: "http://localhost:8080/springmvc/bpm/workflowprocess/start",
-        data: JSON.stringify(search),
+        data: JSON.stringify(bpmdata),
         dataType: 'json',
         cache: false,
         timeout: 600000,
@@ -47,7 +52,7 @@ function start_the_workflow_process() {
 
         },
         error: function (e) {
-            alert("error! " + e.toString());
+            //alert("error! " + e.toString());
 
             var json = "<h4>Ajax Response</h4><pre>"
                 + e.responseText + "</pre>";
@@ -56,6 +61,52 @@ function start_the_workflow_process() {
 
             console.log("ERROR : ", e);
             $("#btnStart").prop("disabled", false);
+
+        }
+    });
+
+}
+
+
+function finish_the_workflow_task() {
+    //alert($("#username").val());
+    var bpmdata = {}
+    bpmdata["bpmidinstance"] = $("#bpmidinstance").val();
+    bpmdata["bpmidtask"] = $("#bpmidtask").val();
+    //search["email"] = $("#email").val();
+
+    $("#btnFinishTask").prop("disabled", true);
+    var sdata = JSON.stringify(bpmdata);
+    alert("bpmdata: " + sdata);
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "http://localhost:8080/springmvc/bpm/workflowprocess/task/finish",
+        data: JSON.stringify(bpmdata),
+        dataType: 'json',
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+            //alert("success! " + data);
+            var json = "<h4>Ajax Response</h4><pre>"
+                + JSON.stringify(data, null, 4) + "</pre>";
+            $('#feedback').html(json);
+
+            console.log("SUCCESS : ", data);
+            $("#btnFinishTask").prop("disabled", false);
+
+        },
+        error: function (e) {
+            alert("error! " + e.toString());
+
+            var json = "<h4>Ajax Response</h4><pre>"
+                + e.responseText + "</pre>";
+
+            $('#feedback').html(json);
+
+            console.log("ERROR : ", e);
+            $("#btnFinishTask").prop("disabled", false);
 
         }
     });

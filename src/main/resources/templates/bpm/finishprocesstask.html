@@ -41,14 +41,20 @@
 
         <form class="form-horizontal" id="search-form">
             <div class="form-group form-group-lg">
-                <label class="col-sm-2 control-label">Process ID</label>
+                <label class="col-sm-2 control-label">Process ID Instance</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="bpmid" name="bpmid" value="accountant_Fixed_Asset_Disposal"/>
+                    <input type="text" class="form-control" id="bpmidinstance" name="bpmidinstance"/>
+                </div>
+            </div>
+            <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Process ID Task</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="bpmidtask" name="bpmidtask"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <input type="button" id="btnStart" name="btnStart" value="Start BPM"
+                    <input type="button" id="btnFinishTask" name="btnFinishTask" value="Finish BPM Task"
                             class="btn btn-primary btn-lg">
                     </input>
                 </div>
