@@ -73,11 +73,12 @@ function finish_the_workflow_task() {
     var bpmdata = {}
     bpmdata["bpmidinstance"] = $("#bpmidinstance").val();
     bpmdata["bpmidtask"] = $("#bpmidtask").val();
+    bpmdata["processdetailsid"] = $("#processdetailsid").val();
     //search["email"] = $("#email").val();
 
     $("#btnFinishTask").prop("disabled", true);
     var sdata = JSON.stringify(bpmdata);
-    alert("bpmdata: " + sdata);
+    //alert("bpmdata: " + sdata);
 
     $.ajax({
         type: "POST",
