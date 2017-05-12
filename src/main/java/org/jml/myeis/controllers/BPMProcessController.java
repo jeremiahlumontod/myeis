@@ -73,7 +73,7 @@ public class BPMProcessController {
             com.cbody.cbody2 doc = com.cbody.cbody2.createDocument();
             com.cbody.detailsType details = doc.details.append();
             com.cbody.descriptionType description = details.description.append();
-            description.setValue(bpmid + ": " + new Date());
+            description.setValue(bpmid + ":" + new Date());
             com.cbody.processinfoType processinfo = details.processinfo.append();
             com.cbody.statusType status = processinfo.status.append();
             status.setValue(statuscode);
