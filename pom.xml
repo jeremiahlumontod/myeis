@@ -35,7 +35,7 @@
 		<dependency>
 			<groupId>org.jml.utils</groupId>
 			<artifactId>cbody</artifactId>
-			<version>1.2</version>
+			<version>1.4</version>
 		</dependency>
 
 		<dependency>

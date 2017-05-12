@@ -28,6 +28,9 @@ function start_the_workflow_process() {
     //alert($("#username").val());
     var bpmdata = {}
     bpmdata["bpmid"] = $("#bpmid").val();
+    bpmdata["statuscode"] = $("#statuscode").val();
+    bpmdata["usertype"] = $("#usertype").val();
+    bpmdata["usercode"] = $("#usercode").val();
 
     $("#btnStart").prop("disabled", true);
     var sdata = JSON.stringify(bpmdata);
@@ -74,6 +77,11 @@ function finish_the_workflow_task() {
     bpmdata["bpmidinstance"] = $("#bpmidinstance").val();
     bpmdata["bpmidtask"] = $("#bpmidtask").val();
     bpmdata["processdetailsid"] = $("#processdetailsid").val();
+
+    bpmdata["statuscode"] = $("#statuscode").val();
+    bpmdata["usertype"] = $("#usertype").val();
+    bpmdata["usercode"] = $("#usercode").val();
+
     //search["email"] = $("#email").val();
 
     $("#btnFinishTask").prop("disabled", true);

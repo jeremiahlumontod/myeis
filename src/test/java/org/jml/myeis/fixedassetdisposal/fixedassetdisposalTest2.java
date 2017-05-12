@@ -104,8 +104,15 @@ public class fixedassetdisposalTest2 {
         //object model for extended data    
         com.cbody.cbody2 doc = com.cbody.cbody2.createDocument();
         com.cbody.detailsType details = doc.details.append();
+        com.cbody.processinfoType processinfo = details.processinfo.append();
         com.cbody.descriptionType description = details.description.append();
         description.setValue("test fixed asset disposal: " + new Date());
+        com.cbody.statusType status = processinfo.status.append();
+        status.setValue("open");
+        com.cbody.typeType type = processinfo.type.append();
+        type.setValue("usertype");
+        com.cbody.codeType code = processinfo.code.append();
+        code.setValue("testuser");
         com.cbody.stepsType steps = details.steps.append();
         com.cbody.nextstepType nextstep = steps.nextstep.append();
         com.cbody.procidinstanceType procidinstance = nextstep.procidinstance.append();
@@ -227,8 +234,22 @@ public class fixedassetdisposalTest2 {
             processDetails.setProcid("accountant_Fixed_Asset_Disposal");
             processDetails = bpmRepository.save(processDetails);
 
-        }while (!checkProcessStatus(procID).equalsIgnoreCase("process finished"));
+        } while (!checkProcessStatus(procID).equalsIgnoreCase("process finished"));
 
+        //process is finished, log it
+        processDetails = bpmRepository.findOne(processDetails.getId());
+        doc = com.cbody.cbody2.loadFromString(processDetails.getCbody());
+        details = doc.details.first();
+        processinfo = details.processinfo.append(); //add new process info, this is the second entry
+        status = processinfo.status.append();
+        status.setValue("finish");
+        type = processinfo.type.append();
+        type.setValue("usertype");
+        code = processinfo.code.append();
+        code.setValue("testuser");
+        s = doc.saveToString(true);
+        processDetails.setCbody(s);
+        processDetails = bpmRepository.save(processDetails);
         System.out.println("\n\nprocess finished");
 
 
