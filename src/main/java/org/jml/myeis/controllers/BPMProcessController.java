@@ -153,8 +153,10 @@ public class BPMProcessController {
             taskname.setValue(task.getName());
             com.cbody.stepType step = nextstep.step.append();
             step.setValue(task.getId());
-            com.cbody.useridType userid = nextstep.userid.append();
-            userid.setValue(usercode);
+            com.cbody.usertypeType usertypeP = nextstep.usertype.append();
+            usertypeP.setValue(usertype);
+            com.cbody.usercodeType usercodeP = nextstep.usercode.append();
+            usercodeP.setValue(usercode);
             com.cbody.bflagType bflag = nextstep.bflag.append();
             bflag.setValue("false");
             com.cbody.descriptionType description = nextstep.description.append();
