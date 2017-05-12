@@ -101,6 +101,12 @@ public class BPMProcessController {
             usercodeP.setValue(usercode);
             com.cbody.bflagType bflag = nextstep.bflag.append();
             bflag.setValue("false");
+            com.cbody.completedType completed = nextstep.completed.append();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+            String d = dateFormat.format(date);
+            completed.setValue(usertype + "|" + usercode + "|" + d);
+
             com.cbody.descriptionType desc = nextstep.description.append();
             desc.setValue(processDetails.getProcid() + ": " + new Date());
 
