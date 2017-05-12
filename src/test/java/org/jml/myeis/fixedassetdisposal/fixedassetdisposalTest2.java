@@ -95,7 +95,7 @@ public class fixedassetdisposalTest2 {
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("newstring", new String());
         //all bpm process files should be place in src/main/resources/processes
-        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("accountant_Fixed_Asset_Disposal", variables);
+        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("accountant_Fixed_Asset_Disposalv20170512", variables);
         String procID = processInstance.getId();
         System.out.println("processInstance.getId(): " + processInstance.getId());
 
