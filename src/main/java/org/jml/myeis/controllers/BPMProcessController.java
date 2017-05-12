@@ -108,7 +108,7 @@ public class BPMProcessController {
             completed.setValue(usertype + "|" + usercode + "|" + d);
 
             com.cbody.descriptionType desc = nextstep.description.append();
-            desc.setValue(processDetails.getProcid() + ": " + new Date());
+            desc.setValue(procID + "|" + task.getId() + "|: " + new Date());
 
             String s = doc.saveToString(true);
             processDetails.setCbody(s);
@@ -224,13 +224,12 @@ public class BPMProcessController {
                 com.cbody.bflagType bflag = nextstep.bflag.append();
                 bflag.setValue("false");
                 com.cbody.descriptionType description = nextstep.description.append();
-                description.setValue(processDetails.getProcid() + ": " + new Date());
+                description.setValue(processDetails.getProcid() + "|" + task.getId() + "|: " + new Date());
                 completed = nextstep.completed.append();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                 Date date = new Date();
                 String d = dateFormat.format(date);
-                completed.setValue(d);
-                procidinstance.setValue(bpmid);
+                completed.setValue(usertype + "|" + usercode + "|" + d);
 
                 String s = doc.saveToString(true);
                 processDetails.setCbody(s);
