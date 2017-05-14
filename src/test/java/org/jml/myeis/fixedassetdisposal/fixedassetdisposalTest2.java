@@ -107,6 +107,8 @@ public class fixedassetdisposalTest2 {
         com.cbody.processinfoType processinfo = details.processinfo.append();
         com.cbody.descriptionType description = details.description.append();
         description.setValue("test fixed asset disposal: " + new Date());
+        com.cbody.processdetailsidType processdetailsid = details.processdetailsid.append();
+        processdetailsid.setValue("12345");
         com.cbody.statusType status = processinfo.status.append();
         status.setValue("open");
         com.cbody.typeType type = processinfo.type.append();
