@@ -19,15 +19,10 @@ public class HTTPConnection {
 
 
     public static void main(String[] args) throws Exception {
-//        HTTPConnection.sendGet();
-//        HTTPConnection.getHttpResponse("https://localhost:8443/ssomyeis/oauth/token?grant_type=password&username=user&password=user","user","user");
-//        HTTPConnection.getHttpResponse("http://localhost:8080/ssomyeis/oauth/token?grant_type=password&username=user&password=user","jml-client-id","12345");
-//        HTTPConnection.getHttpResponseSSL("https://localhost:8443/ssomyeis/oauth/token?grant_type=password&username=user&password=user","jml-client-id","12345");
-//        HTTPConnection.getHttpResponse("http://localhost:8080/ssomyeis/oauth/token","user","user");
 
 
-//        new HTTPConnection().getHttpResponseSSL("https://localhost:8443/ssomyeis/oauth/token?grant_type=password&username=user&password=user","jml-client-id","12345");
-        new HTTPConnection().getHttpResponse("http://localhost:8080/ssomyeis/oauth/token?grant_type=password&username=user&password=user","jml-client-id","12345");
+        new HTTPConnection().getHttpResponseSSL("https://localhost:8443/ssomyeis/oauth/token?grant_type=password&username=user&password=user","jml-client-id","12345");
+//        new HTTPConnection().getHttpResponse("http://localhost:8080/ssomyeis/oauth/token?grant_type=password&username=user&password=user","jml-client-id","12345");
     }
 
     // HTTP GET request
