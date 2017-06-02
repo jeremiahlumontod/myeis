@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class InboxController {
-    @RequestMapping("/inbox")
+    @RequestMapping("/myeis/inbox")
     public String getInbox(HttpServletRequest request, Model model) {
 
         model.addAttribute("product", null);
-        return "bpm/index";
+        return "bpm/inbox";
     }
 }
