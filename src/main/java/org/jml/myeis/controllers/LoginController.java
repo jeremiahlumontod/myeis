@@ -25,4 +25,18 @@ public class LoginController {
 
     }
 
+    @RequestMapping(value = "/api/showlogin", method = RequestMethod.POST)
+    public String showLogin() {
+        logger.debug("showlogin");
+        return "/login";
+
+    }
+
+    @RequestMapping(value = "/api/loginform", method = RequestMethod.POST)
+    public String loginForm() {
+        logger.debug("loginForm");
+        return "/";
+
+    }
+
 }
