@@ -25,7 +25,7 @@ public class LoginController {
 
     }
 
-    @RequestMapping(value = "/myeis/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/myeis/login", method = RequestMethod.GET)
     public String showLogin() {
         logger.debug("login");
         return "/bpm/login";

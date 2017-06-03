@@ -1,5 +1,6 @@
 package org.jml.myeis.interceptors;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -33,7 +34,7 @@ public class LogInterceptor implements HandlerInterceptor {
         String will_login_flag = (String) request.getSession().getAttribute("will_login");
         will_login_flag=will_login_flag==null?"":will_login_flag;
         if(will_login_flag.equalsIgnoreCase("true")) {
-            request.getSession().setAttribute("will_login","false");
+            //request.getSession().setAttribute("will_login","false");
             return;
         }
 
@@ -48,12 +49,14 @@ public class LogInterceptor implements HandlerInterceptor {
 
         if(access_token==null) {
             request.getSession().setAttribute("will_login","true");
-            HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-            loginUri = HTTPUtils.getContextUrl(httpServletRequest);
+            loginUri = HTTPUtils.getContextUrl(request);
             loginUri += properties.getHttprootcontext();
             HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-            httpServletRequest.getSession().setAttribute("will_login","true");
+            request.getSession().setAttribute("will_login","true");
             ((HttpServletResponse) response).sendRedirect(loginUri);
+            //String dispatchUrl = request.getRequestURL().toString();
+            //RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher(properties.getHttprootcontext());
+            //dispatcher.forward(request, response);
             return;
         }
     }
