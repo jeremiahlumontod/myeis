@@ -13,7 +13,7 @@ public class HTTPUtils {
     }
 
     public static String getContextUrl(HttpServletRequest request) {
-        System.out.println("request.getRequestURI(): " + request.getRequestURI());
+        //System.out.println("request.getRequestURI(): " + request.getRequestURI());
         String scheme = request.getScheme() + "://";
         String serverName = request.getServerName();
         String serverPort = (request.getServerPort() == 80) ? "" : ":" + request.getServerPort();

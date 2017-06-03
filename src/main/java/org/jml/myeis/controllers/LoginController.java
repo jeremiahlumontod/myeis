@@ -25,14 +25,14 @@ public class LoginController {
 
     }
 
-    @RequestMapping(value = "/api/showlogin", method = RequestMethod.POST)
+    @RequestMapping(value = "/myeis/login", method = RequestMethod.POST)
     public String showLogin() {
-        logger.debug("showlogin");
-        return "/login";
+        logger.debug("login");
+        return "/bpm/login";
 
     }
 
-    @RequestMapping(value = "/api/loginform", method = RequestMethod.POST)
+    @RequestMapping(value = "/myeis/loginform", method = RequestMethod.POST)
     public String loginForm() {
         logger.debug("loginForm");
         return "/";
