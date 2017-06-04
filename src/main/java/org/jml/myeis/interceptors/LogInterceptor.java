@@ -37,6 +37,16 @@ public class LogInterceptor implements HandlerInterceptor {
             return;
         }
 
+        String islogouta[] = request.getRequestURI().split("\\/");
+        if(islogouta!=null) {
+            if (islogouta[islogouta.length-1].equalsIgnoreCase("logout")) {
+                HTTPUtils.resetLoginFlagToFalse(request);
+            }
+            if (islogouta[islogouta.length-1].equalsIgnoreCase("inbox")) {
+                HTTPUtils.resetLoginFlagToFalse(request);
+            }
+        }
+
         String will_login_flag = HTTPUtils.getLoginFlag(request);
         will_login_flag=will_login_flag==null?"":will_login_flag;
         if(will_login_flag.equalsIgnoreCase("true")) {
@@ -56,7 +66,7 @@ public class LogInterceptor implements HandlerInterceptor {
         if(access_token==null) {
             //request.getSession().setAttribute("will_login","true");
             loginUri = HTTPUtils.getContextUrl(request);
-            loginUri += properties.getHttprootcontext();
+            loginUri += properties.getLogin();
             long keepFresh = new Date().getTime();
             loginUri += "?keepFresh=" + keepFresh; //guarantee a unique url everytime
             HttpServletResponse httpServletResponse = (HttpServletResponse) response;

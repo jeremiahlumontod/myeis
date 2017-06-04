@@ -61,7 +61,7 @@ public class SecurityFilter implements Filter {
                 @Override
                 public StringBuffer getRequestURL() {
                     final StringBuffer originalUrl = httpServletRequest.getRequestURL();
-                    final String routeToLogin = HTTPUtils.getContextUrl(httpServletRequest) + properties.getHttprootcontext();;
+                    final String routeToLogin = HTTPUtils.getContextUrl(httpServletRequest) + properties.getLogin();
                     //return new StringBuffer(loginUri);
                     System.out.println("routeToLogin: " + routeToLogin);
                     return new StringBuffer(routeToLogin);

@@ -36,8 +36,9 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/myeis/login", method = RequestMethod.GET)
-    public String showLogin() {
+    public String showLogin(HttpServletRequest request, HttpServletResponse response) {
         logger.debug("login");
+        HTTPUtils.resetLoginFlagToTrue(request);
         return "/bpm/login";
 
     }
@@ -46,8 +47,17 @@ public class LoginController {
     public String loginForm(HttpServletRequest request, HttpServletResponse response) {
         logger.debug("loginForm");
         HTTPUtils.setLoggedFlag(request);
+        HTTPUtils.resetLoginFlagToFalse(request);
         String inboxUri = properties.getInbox();
-        long keepFresh = new Date().getTime();
+        return inboxUri;
+    }
+
+    @RequestMapping(value = "/myeis/logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        logger.debug("logout");
+        HTTPUtils.setLoggedFlagToFalse(request);
+        HTTPUtils.resetLoginFlagToFalse(request);
+        String inboxUri = properties.getInbox();
         return inboxUri;
     }
 

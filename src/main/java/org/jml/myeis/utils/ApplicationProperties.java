@@ -14,8 +14,8 @@ public class ApplicationProperties {
     @Value("${sso.authenticationcheck.url}")
     private String authenticationcheck;
 
-    @Value("${sso.httprootcontext.url}")
-    private String httprootcontext;
+    @Value("${sso.login.url}")
+    private String login;
 
     @Value("${sso.inbox.url}")
     private String inbox;
@@ -37,12 +37,12 @@ public class ApplicationProperties {
         this.authenticationcheck = authenticationcheck;
     }
 
-    public String getHttprootcontext() {
-        return httprootcontext;
+    public String getLogin() {
+        return login;
     }
 
-    public void setHttprootcontext(String httprootcontext) {
-        this.httprootcontext = httprootcontext;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getInbox() {
@@ -55,7 +55,7 @@ public class ApplicationProperties {
 
     @Override
     public String toString() {
-        return "authorizationcheck{url=" + authorizationcheck + "}, authentication{url=" + authenticationcheck + "}, httprootcontext{url=" + httprootcontext + "}";
+        return "authorizationcheck{url=" + authorizationcheck + "}, authentication{url=" + authenticationcheck + "}, login{url=" + login + "}";
     }
 }
 

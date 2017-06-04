@@ -1,6 +1,7 @@
 package org.jml.myeis.utils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 
 public class HTTPUtils {
@@ -37,6 +38,10 @@ public class HTTPUtils {
         request.getSession().setAttribute("islogged","true");
     }
 
+    public static void setLoggedFlagToFalse(HttpServletRequest request) {
+        request.getSession().setAttribute("islogged","false");
+    }
+
     public static boolean isLogged(HttpServletRequest request) {
         try {
             return request.getSession().getAttribute("islogged").toString().equalsIgnoreCase("true");
@@ -45,4 +50,7 @@ public class HTTPUtils {
         }
     }
 
+    public static long getKeepFreshValue() {
+        return new Date().getTime();
+    }
 }
