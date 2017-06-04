@@ -1,18 +1,28 @@
 package org.jml.myeis.controllers;
 
 import org.jml.myeis.domain.Login;
+import org.jml.myeis.utils.ApplicationProperties;
+import org.jml.myeis.utils.HTTPUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
+
 @Controller
 public class LoginController {
 
     private final Logger logger = LoggerFactory.getLogger(LoginController.class);
+
+    @Autowired
+    private ApplicationProperties properties;
 
     @PostMapping("/api/login")
     public ResponseEntity<?> login(@RequestBody Login login) {
@@ -33,10 +43,13 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/myeis/loginform", method = RequestMethod.POST)
-    public String loginForm() {
+    public String loginForm(HttpServletRequest request, HttpServletResponse response) {
         logger.debug("loginForm");
-        return "/";
-
+        HTTPUtils.setLoggedFlag(request);
+        String inboxUri = properties.getInbox();
+        long keepFresh = new Date().getTime();
+        return inboxUri;
     }
 
 }
+

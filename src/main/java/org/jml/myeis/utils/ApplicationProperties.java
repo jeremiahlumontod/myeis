@@ -17,6 +17,10 @@ public class ApplicationProperties {
     @Value("${sso.httprootcontext.url}")
     private String httprootcontext;
 
+    @Value("${sso.inbox.url}")
+    private String inbox;
+
+
     public String getAuthorizationcheck() {
         return authorizationcheck;
     }
@@ -39,6 +43,14 @@ public class ApplicationProperties {
 
     public void setHttprootcontext(String httprootcontext) {
         this.httprootcontext = httprootcontext;
+    }
+
+    public String getInbox() {
+        return inbox;
+    }
+
+    public void setInbox(String inbox) {
+        this.inbox = inbox;
     }
 
     @Override

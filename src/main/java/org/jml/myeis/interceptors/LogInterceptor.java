@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
+
 @Component
 public class LogInterceptor implements HandlerInterceptor {
 
@@ -31,7 +33,11 @@ public class LogInterceptor implements HandlerInterceptor {
             throws Exception {
         log.info("Method executed");
 
-        String will_login_flag = (String) request.getSession().getAttribute("will_login");
+        if(HTTPUtils.isLogged(request)) {
+            return;
+        }
+
+        String will_login_flag = HTTPUtils.getLoginFlag(request);
         will_login_flag=will_login_flag==null?"":will_login_flag;
         if(will_login_flag.equalsIgnoreCase("true")) {
             //request.getSession().setAttribute("will_login","false");
@@ -48,11 +54,14 @@ public class LogInterceptor implements HandlerInterceptor {
         String loginUri = null;
 
         if(access_token==null) {
-            request.getSession().setAttribute("will_login","true");
+            //request.getSession().setAttribute("will_login","true");
             loginUri = HTTPUtils.getContextUrl(request);
             loginUri += properties.getHttprootcontext();
+            long keepFresh = new Date().getTime();
+            loginUri += "?keepFresh=" + keepFresh; //guarantee a unique url everytime
             HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-            request.getSession().setAttribute("will_login","true");
+            HTTPUtils.resetLoginFlagToTrue(request);
+            //request.getSession().setAttribute("will_login","true");
             ((HttpServletResponse) response).sendRedirect(loginUri);
             //String dispatchUrl = request.getRequestURL().toString();
             //RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher(properties.getHttprootcontext());

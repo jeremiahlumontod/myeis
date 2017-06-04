@@ -20,4 +20,29 @@ public class HTTPUtils {
         String contextPath = request.getContextPath();
         return scheme + serverName + serverPort + contextPath;
     }
+
+    public static String getLoginFlag(HttpServletRequest request) {
+        return (String) request.getSession().getAttribute("will_login");
+    }
+
+    public static void resetLoginFlagToFalse(HttpServletRequest request) {
+        request.getSession().setAttribute("will_login","false");
+    }
+
+    public static void resetLoginFlagToTrue(HttpServletRequest request) {
+        request.getSession().setAttribute("will_login","true");
+    }
+
+    public static void setLoggedFlag(HttpServletRequest request) {
+        request.getSession().setAttribute("islogged","true");
+    }
+
+    public static boolean isLogged(HttpServletRequest request) {
+        try {
+            return request.getSession().getAttribute("islogged").toString().equalsIgnoreCase("true");
+        }catch(Exception e) {
+            return false;
+        }
+    }
+
 }
