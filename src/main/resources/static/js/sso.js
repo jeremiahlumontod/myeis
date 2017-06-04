@@ -1,36 +1,22 @@
 
 $(document).ready(function() {
-	//alert("$(document).ready(function() fired!");
 
-
-    $('#btnSearch').click(function() {
-        //alert("btnSearch fired!");
-        fire_ajax_submit();
-        return false;
-    });
-
-    $('#btnStart').click(function() {
-        //alert("btnStart fired!");
-        start_the_workflow_process();
-        return false;
-    });
-
-    $('#btnFinishTask').click(function() {
-        //alert("btnStart fired!");
-        finish_the_workflow_task();
+    $('#btnLogin').click(function() {
+        alert("btnLogin fired!");
+        login_sso();
         return false;
     });
 
 });
 
 
-function start_the_workflow_process() {
+function login_sso() {
     //alert($("#username").val());
-    var bpmdata = {}
-    bpmdata["bpmid"] = $("#bpmid").val();
-    bpmdata["statuscode"] = $("#statuscode").val();
-    bpmdata["usertype"] = $("#usertype").val();
-    bpmdata["usercode"] = $("#usercode").val();
+    var ssodata = {}
+    ssodata["grant_type"] = "password";
+    ssodata["username"] = $("#username").val();
+    ssodata["password"] = $("#password").val();
+    //ssodata["usercode"] = $("#usercode").val();
 
     $("#btnStart").prop("disabled", true);
     var sdata = JSON.stringify(bpmdata);
@@ -39,8 +25,8 @@ function start_the_workflow_process() {
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "http://localhost:8080/myeis/bpm/workflowprocess/start",
-        data: JSON.stringify(bpmdata),
+        url: "https://localhost:8443/ssomyeis/oauth/token",
+        data: JSON.stringify(ssodata),
         dataType: 'json',
         cache: false,
         timeout: 600000,
